@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body bgcolor="#E3E3E3">
+<form th:action="login" method="post">
+    <table>
+        <caption>用户登录</caption>
+        <tr><td>登录名：</td>
+            <td><input type="text" name="username" size=”20”/></td>
+        </tr><tr><td>密码:</td>
+        <td><input type="password" name="password" size=”21”/></td></tr>
+    </table>
+    </table>
+    <input type="submit" value="登录"/>
+    <input type="reset" value="重置"/>
+</form>
+如果没注册单击<a th:href="@{/register}" target="_blank">这里</a>注册！<!--<a> 标签每出现一次，就会创建超链接,href用于设置或返回被链接资源的URL
+target="_blank"可以让超链接在新的窗口中打开，这样就不需要离开原来的页面了-->
+
+<!--&lt;!&ndash;这是thymeleaf的语法!! 检测到绝对路径的时候自动加上前缀&ndash;&gt;-->
+<!--<a th:href="@{/target}">访问目标页面target.html</a>-->
+<!--<a th:href="@{/testRequestMapping}">访问目标页面success.html</a>-->
+<!--<a th:href="@{/test}">访问目标页面success.html</a>-->
+<!--<form th:action="@{/test}" method="post">-->
+<!--    <input type="submit" value="测试RequestMapping注解的method属性&ndash;&gt;POST">-->
+<!--</form>-->
+
+<!--<a th:href="@{/testGetMapping}">测试GetMapping注解</a>-->
+</body>
+</html>

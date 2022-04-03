@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mvc.dao.mapper.UserMapper">
+<!--    List<User> getAllUser();-->
+    <select id="getAllUser" resultType="User">
+        select * from usertable;
+    </select>
+<!--    User checkLogin(String username, String password);-->
+    <select id="checkLogin" resultType="User">
+-- arg0, arg1... 或者param1, param2... 混着也行, 位置不错就行...
+--     $的本质是字符串拼接, 需要加单引号
+        select * from usertable where username = #{arg0} and password = #{arg1}
+    </select>
+
+<!--    boolean insertUser(String username, String password);-->
+    <select id="insertUser" resultType="User">
+        insert into usertable (id, username, password) values(null, #{arg0}, #{arg1})
+    </select>
+</mapper>

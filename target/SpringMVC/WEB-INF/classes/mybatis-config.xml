@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="jdbc.properties"/>
+
+    <typeAliases>
+        <package name="com.atguigu.mvc.dao.pojo"/>
+    </typeAliases>
+
+    <!--environments: 设置多个连接数据库的环境
+        属性:
+            default: 设置默认使用的环境的id
+    -->
+    <environments default="development">
+<!--        配置某个具体的环境
+            属性:
+                id 表示连接数据库的环境的唯一标识, 不能重复
+-->
+        <environment id="development">
+<!--            transactionManager设置事务管理方式
+                JDBC: 表示当前环境中, 执行sql时, 使用的时JDBC中原生的事务管理方式, 手动进行事务提交
+-->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+<!--                这个${}千万别忘了-->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--引入映射文件-->
+    <mappers>
+        <package name="com.atguigu.mvc.dao.mapper" />
+    </mappers>
+</configuration>

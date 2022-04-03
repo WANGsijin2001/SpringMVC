@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mvc.dao.mapper.UserMapper">
+<!--    int insertUser();-->
+    <insert id="insertuser">
+-- 用null可以避免那个问题
+        insert into usertable values(null, 123, 123)
+    </insert>
+</mapper>
