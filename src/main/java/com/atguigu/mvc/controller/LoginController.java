@@ -1,4 +1,4 @@
-package com.atguigu.mvc.controller;
+package com.atguigu.mvc.dao.controller;
 import com.atguigu.mvc.dao.mapper.UserMapper;
 
 import com.atguigu.mvc.dao.pojo.User;
@@ -17,8 +17,12 @@ import java.io.IOException;
 public class LoginController {
     @RequestMapping("/")
     public String index(){
+        return "index";
+    }//初始显示index.html
+    @RequestMapping("/tologin")
+    public String tologin(){
         return "login";
-    }
+    }//添加了一个tologin方法用于显示login.html
     @RequestMapping("/login")
 //    一般不用request获取, 因为springmvc已经获取过了
     /*通过控制器的形参获取请求参数, 保证名字一样即可, 如果出现同名, 可以在控制器方法的形参位置设置字符串类型或字符串数组接收此参数
@@ -34,7 +38,7 @@ public class LoginController {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User user = mapper.checkLogin(username, password);
-        if(user != null) mav.setViewName("index.html");
+        if(user != null) mav.setViewName("error");
         else mav.setViewName("error");
         return mav;
     }
